@@ -80,7 +80,7 @@ jobs:
           wget https://github.com/ARM-software/CMSIS_5/raw/develop/CMSIS/Utilities/Linux64/SVDConv
           chmod 0770 SVDConv
           popd
-          SVDConv soc602_reg.svd || [ $? -eq 1 ]
+          /bin/bash -c "SVDConv soc602_reg.svd | [ $? -eq 1 ]"
       - name: Build PAC
         run: ./scripts/regenerate-rust-code.sh soc602_reg.svd src
 
